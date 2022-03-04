@@ -7,7 +7,7 @@ class ActivitiesManager
 
   def parse_activities_by_user
     convert_timestamp
-    sort_activities_by_answered_at
+    sort_activities_by_first_seen_at
     activities.group_by { |activity| activity["user_id"] }
   end
 
@@ -20,7 +20,7 @@ class ActivitiesManager
     end
   end
 
-  def sort_activities_by_answered_at
+  def sort_activities_by_first_seen_at
     activities.sort! { |a, b| a["first_seen_at"] <=> b["first_seen_at"] }
   end
 end
