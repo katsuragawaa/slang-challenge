@@ -11,6 +11,8 @@ class ActivitiesManager
     activities.group_by { |activity| activity["user_id"] }
   end
 
+  private
+
   def convert_timestamp
     activities.each do |activity|
       activity["first_seen_at"] = Time.parse(activity["first_seen_at"]).utc
