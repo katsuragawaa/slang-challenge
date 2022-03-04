@@ -13,8 +13,8 @@ class ActivitiesManager
 
   def convert_timestamp
     activities.each do |activity|
-      activity["first_seen_at"] = Time.parse(activity["first_seen_at"]).iso8601
-      activity["answered_at"] = Time.parse(activity["answered_at"]).iso8601
+      activity["first_seen_at"] = Time.parse(activity["first_seen_at"]).utc
+      activity["answered_at"] = Time.parse(activity["answered_at"]).utc
     end
   end
 
