@@ -1,4 +1,7 @@
 require "httparty"
+require "time"
+require "./services/users_sessions_service"
+require "./services/activities_manager"
 
 SLANG_API_KEY = ENV["SLANG_CHALLENGE_API_KEY"]
 
@@ -13,7 +16,14 @@ begin
     }
   )
 
-  puts response.code == 200 ? response.body : response.message
+  puts response.message
+
+  result = JSON.parse(response.body)
+
+  service = ActivitiesManager.new(result["activities"])
+  parsed = service.parse_activities_by_user
+
+  puts parsed.to_json
 rescue HTTParty::Error, SocketError => e
   puts e
 end
