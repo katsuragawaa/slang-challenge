@@ -59,6 +59,6 @@ class SortActivitiesServiceTest < Minitest::Test
       end
     end
 
-    assert_equal expected, SortActivitiesService.new(activities).sort
+    assert_equal expected.transform_keys(&:to_s), SortActivitiesService.new(activities).sort
   end
 end

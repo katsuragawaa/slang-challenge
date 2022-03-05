@@ -30,7 +30,7 @@ class SortActivitiesService
   end
 
   def activities_grouped_by_user
-    # Complexity: O(n)
-    activities.group_by { |activity| activity[:user_id] }.transform_keys(&:to_sym)
+    # Complexity: O(1)
+    activities.group_by { |activity| activity[:user_id] }
   end
 end
