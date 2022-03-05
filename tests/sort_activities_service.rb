@@ -33,12 +33,6 @@ class SortActivitiesServiceTest < Minitest::Test
 
     activities = [
       {
-        id: 1,
-        user_id: "u1",
-        answered_at: "2022-03-04T09:20:00.000+00:00",
-        first_seen_at: "2022-03-04T09:10:00.000+00:00"
-      },
-      {
         id: 2,
         user_id: "u1",
         answered_at: "2022-03-04T09:30:00.000+00:00",
@@ -49,6 +43,12 @@ class SortActivitiesServiceTest < Minitest::Test
         user_id: "u2",
         answered_at: "2022-03-05T10:10:00.000+00:00",
         first_seen_at: "2022-03-05T10:00:00.000+00:00"
+      },
+      {
+        id: 1,
+        user_id: "u1",
+        answered_at: "2022-03-04T09:20:00.000+00:00",
+        first_seen_at: "2022-03-04T09:10:00.000+00:00"
       }
     ]
 
