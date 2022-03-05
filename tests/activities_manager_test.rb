@@ -6,7 +6,7 @@ require_relative "../services/activities_manager"
 
 class ActivityManagerTest < Minitest::Test
   def test_parse_activities
-    expected_hash = {
+    expected = {
       u1: [
         {
           id: 1,
@@ -52,12 +52,10 @@ class ActivityManagerTest < Minitest::Test
       }
     ]
 
-    activities = JSON.parse(activities.to_json)
-    expected = JSON.parse(expected_hash.to_json)
     expected.each_value do |expected_activities|
       expected_activities.each do |activity|
-        activity["answered_at"] = Time.parse(activity["answered_at"]).utc
-        activity["first_seen_at"] = Time.parse(activity["first_seen_at"]).utc
+        activity[:answered_at] = Time.parse(activity[:answered_at]).utc
+        activity[:first_seen_at] = Time.parse(activity[:first_seen_at]).utc
       end
     end
 
