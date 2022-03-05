@@ -4,11 +4,10 @@
 </div>
 
 ## Usage
-Clone the repository
+Clone the private repository
 
 ```bash
-$ git clone https://github.com/katsuragawaa/slang-challenge.git
-$ cd slang-challenge
+$ git clone git@github.com:katsuragawaa/slang-challenge.git && cd slang-challenge
 ```
 
 After that, set your API key as an environment variable:
