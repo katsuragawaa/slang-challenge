@@ -34,9 +34,9 @@ class UsersSessionsService
   end
 
   def parse_user_sessions(user_id, user_activities)
-    minimum_first_seen_at = pick_attribute(user_activities, :first_seen_at).min
-    latest_answer_at = pick_attribute(user_activities, :answered_at).max
-    activity_ids = pick_attribute(user_activities, :id)
+    minimum_first_seen_at = user_activities.first[:first_seen_at]
+    latest_answer_at = user_activities.last[:answered_at]
+    activity_ids = user_activities.map { |activity| activity[:id] }
 
     users_sessions[user_id] ||= []
     users_sessions[user_id] << {
@@ -45,9 +45,5 @@ class UsersSessionsService
       duration: latest_answer_at - minimum_first_seen_at,
       activity_ids: activity_ids
     }
-  end
-
-  def pick_attribute(user_activities, attribute)
-    user_activities.map { |activity| activity[attribute] }
   end
 end
