@@ -17,6 +17,8 @@ class UsersSessionsService
     users_sessions
   end
 
+  private
+
   def get_sessions(activities)
     sessions = []
     activities.each_with_index do |activity, index|
