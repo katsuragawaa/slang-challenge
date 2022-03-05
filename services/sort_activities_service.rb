@@ -8,14 +8,14 @@ class SortActivitiesService
   end
 
   def sort
-    convert_timestamp
+    convert_timestamps
     sort_activities_by_first_seen_at
-    activities.group_by { |activity| activity[:user_id] }.transform_keys(&:to_sym)
+    activities_grouped_by_user
   end
 
   private
 
-  def convert_timestamp
+  def convert_timestamps
     activities.each do |activity|
       activity[:first_seen_at] = Time.parse(activity[:first_seen_at]).utc
       activity[:answered_at] = Time.parse(activity[:answered_at]).utc
@@ -23,6 +23,10 @@ class SortActivitiesService
   end
 
   def sort_activities_by_first_seen_at
-    activities.sort! { |a, b| a[:first_seen_at] <=> b[:first_seen_at] }
+    activities.sort_by! { |activity| activity[:first_seen_at] }
+  end
+
+  def activities_grouped_by_user
+    activities.group_by { |activity| activity[:user_id] }.transform_keys(&:to_sym)
   end
 end
