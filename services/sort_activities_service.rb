@@ -1,13 +1,13 @@
 require "time"
 
-class ActivitiesManager
+class SortActivitiesService
   attr_reader :activities
 
   def initialize(activities)
     @activities = activities
   end
 
-  def parse_activities_by_user
+  def sort
     convert_timestamp
     sort_activities_by_first_seen_at
     activities.group_by { |activity| activity[:user_id] }.transform_keys(&:to_sym)

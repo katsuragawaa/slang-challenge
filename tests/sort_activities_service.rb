@@ -2,10 +2,10 @@ require "minitest/autorun"
 require "minitest/pride"
 require "json"
 require "time"
-require_relative "../services/activities_manager"
+require_relative "../services/sort_activities_service"
 
-class ActivityManagerTest < Minitest::Test
-  def test_parse_activities
+class SortActivitiesServiceTest < Minitest::Test
+  def test_sort
     expected = {
       u1: [
         {
@@ -59,6 +59,6 @@ class ActivityManagerTest < Minitest::Test
       end
     end
 
-    assert_equal expected, ActivitiesManager.new(activities).parse_activities_by_user
+    assert_equal expected, SortActivitiesService.new(activities).sort
   end
 end
