@@ -18,8 +18,8 @@ begin
   puts response.message
 
   result = JSON.parse(response.body, symbolize_names: true)
-  parsed_activities = SortActivitiesService.new(result[:activities]).sort
-  users_sessions = UsersSessionsService.new(parsed_activities).create
+  sorted_activities = SortActivitiesService.new(result[:activities]).sort
+  users_sessions = UsersSessionsService.new(sorted_activities).create
 
   puts users_sessions.to_json
 rescue HTTParty::Error, SocketError => e
