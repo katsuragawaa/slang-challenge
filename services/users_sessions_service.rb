@@ -9,7 +9,7 @@ class UsersSessionsService
   end
 
   def create
-    # Complexity: O(n^2) - double loop
+    # Complexity: O(n^2) - nested loop
     @users_activities.each_pair do |user_id, user_activities|
       activities_by_sessions = get_sessions(user_activities)
       activities_by_sessions.each { |session_activities| parse_user_sessions(user_id, session_activities) }
