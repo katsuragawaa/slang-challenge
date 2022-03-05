@@ -30,7 +30,3 @@ To run them:
 ```bash
 $ ruby ./tests/sort_activities_service.rb && ruby ./tests/users_sessions_service_test.rb
 ```
-
-## Notes
-
-Time Complexity: O(n)
