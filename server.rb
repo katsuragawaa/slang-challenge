@@ -16,8 +16,8 @@ begin
   puts "GET activities: #{get_response.message}"
 
   result = JSON.parse(get_response.body, symbolize_names: true)
-  sorted_activities = SortActivitiesService.new(result[:activities]).sort
-  users_sessions = UsersSessionsService.new(sorted_activities).create
+  sorted_activities = SortActivitiesService.sort(result[:activities])
+  users_sessions = UsersSessionsService.create(sorted_activities)
 
   post_response = HTTParty.post(
     "#{slang_api_url}/sessions",

@@ -7,6 +7,10 @@ class SortActivitiesService
     @activities = activities
   end
 
+  def self.sort(activities)
+    new(activities).sort
+  end
+
   def sort
     # Complexity: O(n)
     convert_timestamps

@@ -8,6 +8,10 @@ class UsersSessionsService
     @users_sessions = {}
   end
 
+  def self.create(users_activities)
+    new(users_activities).create
+  end
+
   def create
     # Complexity: O(n^2) - nested loop
     @users_activities.each_pair do |user_id, user_activities|
