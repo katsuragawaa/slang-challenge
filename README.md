@@ -16,6 +16,12 @@ After that, set your API key as an environment variable:
 $ export SLANG_CHALLENGE_API_KEY='your_api_key'
 ```
 
+Install the gems:
+
+```bash
+$ bundle install
+```
+
 Then run the server:
 
 ```bash
